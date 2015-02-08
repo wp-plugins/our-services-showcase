@@ -1,0 +1,197 @@
+/* 
+    Document   : sc_our_services
+    Created on : Jun 23, 2014, 7:07:26 PM
+    Author     : Bilal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.center{ text-align: center; }
+
+
+.sc_service .sc_service_name a{ text-decoration: none;}
+#sc_our_services_lightbox{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: rgba(0,0,0,0.75);
+    display: none;
+}
+#sc_our_services_lightbox .icons{ display: none;}
+
+#sc_our_services_lightbox .sc_our_services_lightbox .social a{
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+#sc_our_services_lightbox .sc_our_services_lightbox .social a img{
+    width: 25px;
+}
+#sc_our_services_lightbox .progress{
+    height: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);    
+}
+#sc_our_services_lightbox .title{
+    font-weight: 600;
+    font-size: 18px;
+}
+#sc_our_services_lightbox .sc_our_services_lightbox .social{
+    text-align: center;
+}
+#sc_our_services_lightbox .sc_our_services_lightbox{
+    box-shadow: 0 0 4px #fff;
+    -moz-box-shadow: 0 0 4px #fff;
+    -webkit-box-shadow: 0 0 4px #fff;
+    overflow: hidden;
+    display: none;
+    background: #fff;
+    width: 100%;
+}
+.sc_our_services_lightbox.honeycomb .social img{
+    display: inline-block !important;
+}
+.sc_our_services_lightbox .image.circle{
+    width: 155px;
+    height: 155px;
+    border-radius: 100%;
+}
+
+
+#sc_our_services .sc_service .wp-post-image{
+    float: none;
+    width: 100%;
+    transition: 0.45s all ease-in-out;
+    -moz-transition: 0.45s all ease-in-out;
+    -webkit-transition: 0.45s all ease-in-out;
+}
+#sc_our_services .sc_service{
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+#sc_our_services .sc_service .sc_service_name,
+#sc_our_services .sc_service .sc_services_content{
+    padding: 5px;
+}
+#sc_our_services .sc_service .sc_service_name{
+    line-height: 26px;
+    margin-top: 7px;
+}
+#sc_our_services .sc_service .sc_services_more{
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -25px;  
+    transition: 0.45s all ease-in-out;
+    -moz-transition: 0.45s all ease-in-out;
+    -webkit-transition: 0.45s all ease-in-out;    
+}
+#sc_our_services .sc_service_inner:hover .sc_services_more{
+    top: 50%;
+    transform: rotate( 180deg );
+    -moz-transform: rotate( 180deg );
+    -webkit-transform: rotate( 180deg );
+}
+
+/*-- Style 1 --*/
+#sc_our_services.style1 .sc_service_inner{
+    overflow: hidden;
+}
+#sc_our_services.style1 .sc_service_inner:hover .wp-post-image{
+    transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+}
+#sc_our_services.style1 .sc_service .sc_service_inner > a{
+    display: block;
+    position: relative;
+}
+
+/*-- Style 1 --*/
+#sc_our_services.style2 .fa{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 70px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: 2px solid rgb(208, 208, 208);
+    color: rgb(140, 140, 140);
+    transition: 0.3s all ease-in-out;
+    -moz-transition: 0.3s all ease-in-out;
+    -webkit-transition: 0.3s all ease-in-out;
+    position: relative;    
+}
+#sc_our_services.style2 .sc_service:hover .fa{
+    transform: scale( 1.3 );
+    -moz-transform: scale( 1.3 );
+    -webkit-transform: scale( 1.3 );
+    color: #fff;
+}
+#sc_our_services.style2 .sc_service{
+    padding-top: 15px;
+}
+#sc_our_services.style2 .sc_service .sc_service_name{
+    margin-top: 20px;
+    font-weight: 700;
+}
+/**
+* Grid CSS
+*/
+@media (min-width: 768px) {
+  .sc-col-sm-1, .sc-col-sm-2, .sc-col-sm-3, .sc-col-sm-4, .sc-col-sm-5, .sc-col-sm-6, .sc-col-sm-7, .sc-col-sm-8, .sc-col-sm-9, .sc-col-sm-10, .sc-col-sm-11, .sc-col-sm-12 {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;    
+  }
+  .sc-col-sm-12 {
+    width: 100%;
+  }
+  .sc-col-sm-11 {
+    width: 91.66666667%;
+  }
+  .sc-col-sm-10 {
+    width: 83.33333333%;
+  }
+  .sc-col-sm-9 {
+    width: 75%;
+  }
+  .sc-col-sm-8 {
+    width: 66.66666667%;
+  }
+  .sc-col-sm-7 {
+    width: 58.33333333%;
+  }
+  .sc-col-sm-6 {
+    width: 50%;
+  }
+  .sc-col-sm-5 {
+    width: 41.66666667%;
+  }
+  .sc-col-sm-4 {
+    width: 33.33333333%;
+  }
+  .sc-col-sm-3 {
+    width: 25%;
+  }
+  .sc-col-sm-2 {
+    width: 16.66666667%;
+  }
+  .sc-col-sm-1 {
+    width: 8.33333333%;
+  }
+}

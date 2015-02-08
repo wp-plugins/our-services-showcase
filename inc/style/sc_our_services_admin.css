@@ -1,0 +1,134 @@
+/* 
+    Document   : sc_our_services_admin
+    Created on : Jun 25, 2014, 10:07:44 PM
+    Author     : Bilal
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#sc_services_icons{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+#sc_services_icons .fa{
+    font-size: 24px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+#sc_services_icons .fa:hover,
+#sc_services_icons .fa.active{
+    background: #3AD1E8;
+    color: #fff;
+}
+.sc_service{
+    width: 20%;
+    float: left;
+    overflow: hidden;
+}
+.sc_service img{
+    width: 100%;
+}
+
+.sc_service_update_status .sc_service_updating,
+.sc_service_update_status .sc_service_saved{
+    display: none;
+}
+
+.sc_service_inner{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.sc_service_overlay{
+    position: absolute;
+    height: 20px;
+    color: #fff;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    line-height: 20px;
+    background: rgba(50,50,50,0.5);
+}
+
+#features {
+    margin: auto;
+    width: 460px;
+    font-size: 0.9em;
+}
+.connected, .sortable, .exclude, .handles {
+    margin: auto;
+    padding: 0;
+    width: 450px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.sortable.grid {
+    overflow: hidden;
+}
+.connected li, .sortable li, .exclude li, .handles li {
+    list-style: none;
+    border: 1px solid #CCC;
+    background: #F6F6F6;
+    font-family: "Tahoma";
+    color: #1C94C4;
+    margin: 5px;
+    padding: 5px;
+    height: 22px;
+}
+.handles span {
+    cursor: move;
+}
+li.disabled {
+    opacity: 0.5;
+}
+.sortable.grid li {
+    line-height: 80px;
+    float: left;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+}
+li.highlight {
+    background: #FEE25F;
+}
+#connected {
+    width: 440px;
+    overflow: hidden;
+    margin: auto;
+}
+.connected {
+    float: left;
+    width: 200px;
+}
+.connected.no2 {
+    float: right;
+}
+li.sortable-placeholder {
+    border: 1px dashed #CCC;
+    background: none;
+}
+.sc_options_table{
+    float: left;
+    width: 45%;
+    
+}
+.sc_options_table a.button{
+    /*margin-bottom: 5px;*/
+}
+#smartcat_service_info_box .sc_options_table h2{
+    margin: 0;
+}
