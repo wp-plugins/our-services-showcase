@@ -341,25 +341,25 @@ class SmartcatServicesPlugin {
     public function smartcat_set_single_content( $content ) {
         global $post;
 
-        if ( is_single() ) :
-            if ( $post->post_type == 'service' &&
-                    $this->options[ 'single_template' ] == 'standard' &&
-                    $this->options[ 'single_social' ] == 'yes'
-            ) :
-                $facebook = get_post_meta( get_the_ID(), 'service_facebook', true );
-                $twitter = get_post_meta( get_the_ID(), 'service_twitter', true );
-                $linkedin = get_post_meta( get_the_ID(), 'service_linkedin', true );
-                $gplus = get_post_meta( get_the_ID(), 'service_gplus', true );
-                $email = get_post_meta( get_the_ID(), 'service_email', true );
-
-                $content .= '<div class="clear"></div>'
-                        . '<div class="smartcat_services_single_icons">';
-                $content .= $this->smartcat_get_social_content( $facebook, $twitter, $linkedin, $gplus, $email );
-                $content .= '</div>';
-            endif;
-        else :
-
-        endif;
+//        if ( is_single() ) :
+//            if ( $post->post_type == 'service' &&
+//                    $this->options[ 'single_template' ] == 'standard' &&
+//                    $this->options[ 'single_social' ] == 'yes'
+//            ) :
+//                $facebook = get_post_meta( get_the_ID(), 'service_facebook', true );
+//                $twitter = get_post_meta( get_the_ID(), 'service_twitter', true );
+//                $linkedin = get_post_meta( get_the_ID(), 'service_linkedin', true );
+//                $gplus = get_post_meta( get_the_ID(), 'service_gplus', true );
+//                $email = get_post_meta( get_the_ID(), 'service_email', true );
+//
+//                $content .= '<div class="clear"></div>'
+//                        . '<div class="smartcat_services_single_icons">';
+//                $content .= $this->smartcat_get_social_content( $facebook, $twitter, $linkedin, $gplus, $email );
+//                $content .= '</div>';
+//            endif;
+//        else :
+//
+//        endif;
 
         return $content;
     }
