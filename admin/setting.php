@@ -91,16 +91,14 @@
     <div id="gopro">
         <div class="left">
             <h1><b><?php _e('Our Services Showcase Settings', 'smartcat-services'); ?></b></h1>
-            <div> </div>
+            <div><em>The Pro version includes 4 additional templates. <a href="https://smartcatdesign.net/our-services-showcase/" target="_BLANK">View Demo</a></em></div>
         </div>
-<!--        <div class="right">
-            <a href="http://smartcatdesign.net/our-services-showcase-demo/" target="_blank" class="button-secondary" style="padding: 40px;line-height: 0;font-size: 20px">View Demo</a>
-        </div>
-        <div class="right" style="margin-right: 20px">
-            <a href="http://smartcatdesign.net/downloads/our-services-showcase/" target="_blank" class="button-primary" style="padding: 40px;line-height: 0;font-size: 20px">GO PRO NOW</a>
-        </div>-->
+        <div class="right">
+            <a href="https://smartcatdesign.net/downloads/our-services-showcase-pro/" target="_blank" class="button-primary" style="padding: 40px;line-height: 0;font-size: 20px">GO PRO</a>
+        </div>        
     </div>
     <div class="width25 right">
+        
         
         <table class="widefat">
             <thead>
@@ -110,41 +108,11 @@
             <tr>
                 <td>
                     <ul>
-                        <li><?php _e("Template 1: Uses the Service Item's featured image", 'smartcat-services'); ?></li>
-                        <li><?php _e("Template 2: Uses the Service Item's current icon", 'smartcat-services'); ?></li>
+                        <!--<li><a href="#">Watch a 5 minute setup tutorial</a></li>-->
+                        <li>To display services from a specific category, add the category name in the shortcode like this</li>
+                        <li>[our-services group="category name"]</li>
                     </ul>
                     
-                </td>
-            </tr>
-            </thead>
-        </table>
-        
-        <table class="widefat">
-            <thead>
-                <tr>
-                    <th><strong>Our Team/Staff Showcase</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <p>We also have a similar plugin dedicated to showcasing your team members or staff in a professional and appealing way. </p>
-                        <p><a href="https://wordpress.org/plugins/our-team-enhanced/" target="_BLANK" class="button button-primary">Download Plugin</a></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <table class="widefat">
-            <thead>
-            <tr>
-                <th><b>Support this plugin</b> </th>
-            </tr>
-            <tr>
-                <td>
-                    <ul>
-                        <li>Donate</li>
-                    </ul>
                 </td>
             </tr>
             </thead>

@@ -12,7 +12,8 @@ add_action( 'wp_ajax_sc_services_update_order', 'sc_services_update_order' );
 
 class SmartcatServicesPlugin {
 
-    const VERSION = '1.0';
+    const VERSION = '1.2';
+    const NAME = 'Our Services Showcase';
 
     private static $instance;
     private $options;
@@ -28,32 +29,30 @@ class SmartcatServicesPlugin {
     public static function activate() {
 
         $options = array(
-            'template' => 'style2',
-            'social' => 'yes',
-            'single_social' => 'yes',
-            'name' => 'yes',
-            'title' => 'yes',
-            'title_size' => 20,
-            'profile_link' => 'yes',
-            'member_count' => -1,
-            'text_color' => 'FFFFFF',
-            'main_color' => '1F7DCF',
-            'columns' => '3',
-            'margin' => 5,
-            'height' => 170,
-            'link_text' => 'Click Here >>',
-            'single_template' => 'standard',
-            'redirect' => true,
-            'single_image_size' => 'small',
-            'single_skills' => 'yes'
+            'template'              => 'icons',
+            'title'                 => 'yes',
+            'profile_link'          => 'yes',
+            'title_size'            => 20,
+            'member_count'          => -1,
+            'text_color'            => '1F7DCF',
+            'main_color'            => '1F7DCF',
+            'accent_color'            => '1F7DCF',
+            'margin'                => 5,
+            'height'                => 400,
+            'link_text'             => 'Click Here >>',
+            'single_template'       => 'standard',
+            'redirect'              => true,
+            'word_count'            => 10,
+
         );
 
         if ( !get_option( 'smartcat_services_options' ) ) {
             add_option( 'smartcat_services_options', $options );
+            $options[ 'redirect' ] = true;
+            update_option( 'smartcat_services_options', $options );
         }
 
-        $options[ 'redirect' ] = true;
-        update_option( 'smartcat_services_options', $options );
+
     }
 
     public static function deactivate() {
@@ -71,13 +70,9 @@ class SmartcatServicesPlugin {
         add_shortcode( 'our-services', array( $this, 'set_our_services' ) );
         add_action( 'add_meta_boxes', array( $this, 'smartcat_service_info_box' ) );
         add_action( 'save_post', array( $this, 'service_box_save' ) );
-//        add_action( 'widgets_init', array( $this, 'wpb_load_widget' ) );
-//        add_filter( 'manage_posts_columns', array( $this, 'posts_columns' ), 5 );
-//        add_action( 'manage_posts_custom_column', array( $this, 'posts_custom_columns' ), 5, 2 );
         add_action( 'wp_ajax_smartcat_services_update_pm', array( $this, 'smartcat_services_update_order' ) );
         add_action( 'wp_head', array( $this, 'sc_custom_styles' ) );
-        add_filter( 'the_content', array( $this, 'smartcat_set_single_content' ) );
-        add_filter( 'single_template', array( $this, 'smartcat_services_get_single_template' ) );
+        
     }
 
     private function get_options() {
@@ -105,7 +100,7 @@ class SmartcatServicesPlugin {
     public function smartcat_services_menu() {
 
         add_submenu_page( 'edit.php?post_type=service', 'Settings', 'Settings', 'administrator', 'smartcat_services_settings', array( $this, 'smartcat_services_settings' ) );
-        add_submenu_page( 'edit.php?post_type=service', 'Re-Order Members', 'Re-Order Members', 'administrator', 'smartcat_services_reorder', array( $this, 'smartcat_services_reorder' ) );
+        add_submenu_page( 'edit.php?post_type=service', 'Re-Order Services', 'Re-Order Services', 'administrator', 'smartcat_services_reorder', array( $this, 'smartcat_services_reorder' ) );
     }
 
     public function smartcat_services_reorder() {
@@ -123,7 +118,7 @@ class SmartcatServicesPlugin {
 
     public function smartcat_services_load_admin_styles_scripts( $hook ) {
         wp_enqueue_style( 'smartcat_services_admin_style', SC_SERVICES_URL . 'inc/style/sc_our_services_admin.css' );
-        wp_enqueue_style( 'smartcat_services_fontawesome', SC_SERVICES_URL . 'inc/style/font-awesome.min.css', false, '1.0' );
+        wp_enqueue_style( 'smartcat_services_fontawesome', SC_SERVICES_URL . 'inc/style/font-awesome.min.css', false, self::VERSION );
 
         wp_enqueue_script( 'smartcat_services_color_script', SC_SERVICES_URL . 'inc/script/jscolor/jscolor.js', array( 'jquery' ) );
         wp_enqueue_script( 'smartcat_services_script', SC_SERVICES_URL . 'inc/script/sc_our_services_admin.js', array( 'jquery' ) );
@@ -132,31 +127,33 @@ class SmartcatServicesPlugin {
     function smartcat_services_load_styles_scripts() {
 
         // plugin main style
-        wp_enqueue_style( 'smartcat_services_default_style', SC_SERVICES_URL . 'inc/style/sc_our_services.css', false, '1.0' );
-        wp_enqueue_style( 'smartcat_services_fontawesome', SC_SERVICES_URL . 'inc/style/font-awesome.min.css', false, '1.0' );
+        wp_enqueue_style( 'smartcat_services_default_style', SC_SERVICES_URL . 'inc/style/sc_our_services.css', false, self::VERSION );
+        wp_enqueue_style( 'smartcat_services_fontawesome', SC_SERVICES_URL . 'inc/style/font-awesome.min.css', false, self::VERSION );
+        wp_enqueue_style( 'smartcat_services_animate', SC_SERVICES_URL . 'inc/style/animate.min.css', false, self::VERSION );
 
         // plugin main script
-        wp_enqueue_script( 'smartcat_services_default_script', SC_SERVICES_URL . 'inc/script/sc_our_services.js', array( 'jquery' ), '1.0' );
+        wp_enqueue_script( 'smartcat_services_default_script', SC_SERVICES_URL . 'inc/script/sc_our_services.js', array( 'jquery' ), self::VERSION );
     }
 
     function set_our_services( $atts ) {
         extract( shortcode_atts( array(
-            'group' => '',
+            'group'         => '',
+            'template'      => '',
                         ), $atts ) );
         global $content;
 
         ob_start();
 
-        $template = '';
+        
 
         if ( $template == '' ) :
             if ( $this->options[ 'template' ] === false or $this->options[ 'template' ] == '' ) :
-                include SC_SERVICES_PATH . 'inc/template/grid.php';
+                include SC_SERVICES_PATH . 'inc/template/icons.php';
             else :
                 include SC_SERVICES_PATH . 'inc/template/' . $this->options[ 'template' ] . '.php';
             endif;
         else :
-            include SC_SERVICES_PATH . 'inc/template/grid.php';
+            include SC_SERVICES_PATH . 'inc/template/' . $template . '.php';
         endif;
 
         $output = ob_get_clean();
@@ -168,7 +165,7 @@ class SmartcatServicesPlugin {
             'name' => _x( 'Services', 'smartcat-services' ),
             'singular_name' => _x( 'Services Member', 'smartcat-services' ),
             'add_new' => _x( 'Add New', 'smartcat-services' ),
-            'add_new_item' => __( 'Add New Member', 'smartcat-services' ),
+            'add_new_item' => __( 'Add New Service', 'smartcat-services' ),
             'edit_item' => __( 'Edit Service', 'smartcat-services' ),
             'new_item' => __( 'New Service', 'smartcat-services' ),
             'all_items' => __( 'All Services', 'smartcat-services' ),
@@ -326,14 +323,22 @@ class SmartcatServicesPlugin {
     public function sc_custom_styles() {
         ?>
         <style>
-            #sc_our_services .sc_service{ height: <?php echo $this->options[ 'height' ]; ?>px; }
-            #sc_our_services .sc_service .sc_service_inner{ background: #<?php echo $this->options[ 'main_color' ]; ?>; }
-            #sc_our_services .sc_service .sc_service_name a,
-            #sc_our_services .sc_service .sc_services_content { color: #<?php echo $this->options[ 'text_color' ]; ?>; }
+            #sc_our_services .sc_service{ max-height: <?php echo $this->options[ 'height' ]; ?>px; }
+            #sc_our_services .sc_service .sc_service_name a{ color: #<?php echo $this->options[ 'main_color' ]; ?>; }
+            #sc_our_services .sc_service .sc_services_content, 
+            #sc_our_services.smartcat_slide .sc_services_read_more a{ color: #<?php echo $this->options[ 'text_color' ]; ?>; }
             #sc_our_services .sc_service .sc_service_name a { font-size: <?php echo $this->options[ 'title_size' ]; ?>px; }
-            #sc_our_services.style2 .fa{ color: #<?php echo $this->options[ 'main_color' ]; ?>; border: 2px solid #<?php echo $this->options[ 'main_color' ]; ?> }
-            #sc_our_services.style2 .sc_service:hover .fa{ background: #<?php echo $this->options[ 'main_color' ]; ?> }
-            #sc_our_services.style2 a{ color: #<?php echo $this->options['main_color']; ?> }
+            #sc_our_services.smartcat_icons .fa,
+            #sc_our_services.smartcat_columns .sc_service .fa{ color: #<?php echo $this->options[ 'main_color' ]; ?>; border: 2px solid #<?php echo $this->options[ 'main_color' ]; ?> }
+            #sc_our_services.smartcat_icons .sc_service:hover .fa,
+            #sc_our_services.smartcat_slide .sc_service_name{ background: #<?php echo $this->options[ 'main_color' ]; ?> }
+            #sc_our_services.smartcat_slide .sc_services_content{ color: #fff; background: #<?php echo $this->options[ 'text_color' ]; ?> }
+            #sc_our_services.smartcat_icons a{ color: #<?php echo $this->options['main_color']; ?> }
+            #sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_services_read_more a,
+            #sc_our_services.smartcat_slide .sc_service_name a{ color: #fff; }
+            #sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_services_read_more a{ background: #<?php echo $this->options['accent_color']; ?>; }
+            #sc_our_services .sc_service .sc_services_read_more a{ color : #<?php echo $this->options['accent_color'] ?> }
+            
         </style>
         <?php
     }
@@ -423,53 +428,6 @@ class SmartcatServicesPlugin {
 
         return $single_template;
     }
-
-}
-
-class smartcat_services_widget extends WP_Widget {
-
-    function __construct() {
-        parent::__construct(
-                'smartcat_services_widget', __( 'Our Services Widget', 'smartcat_services_widget_domain' ), array( 'description' => __( 'Use this widget to display the Our Services anywhere on the site.', 'smartcat_services_widget_domain' ), )
-        );
-    }
-
-    // Creating widget front-end
-    // This is where the action happens
-    public function widget( $args, $instance ) {
-        $title = apply_filters( 'widget_title', $instance[ 'title' ] );
-
-        // before and after widget arguments are defined by themes
-        echo $args[ 'before_widget' ];
-        if ( !empty( $title ) )
-            echo $args[ 'before_title' ] . $title . $args[ 'after_title' ];
-
-        // This is where you run the code and display the output
-        include 'inc/widget.php';
-        //        echo $args['after_title'];
-    }
-
-    // Widget Backend
-    public function form( $instance ) {
-        if ( isset( $instance[ 'title' ] ) ) {
-            $title = $instance[ 'title' ];
-        } else {
-            $title = __( 'Meet Our Services', 'smartcat_services_widget_domain' );
-        }
-        // Widget admin form
-        ?>
-        <p>
-            <label for="////<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-            <input class="widefat" id="////<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-        </p>
-        <?php
-    }
-
-    // Updating widget replacing old instances with new
-    public function update( $new_instance, $old_instance ) {
-        $instance = array();
-        $instance[ 'title' ] = (!empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
-        return $instance;
-    }
-
+ 
+    
 }

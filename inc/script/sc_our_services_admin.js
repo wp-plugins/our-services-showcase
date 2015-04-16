@@ -38,17 +38,17 @@ jQuery(document).ready(function($) {
     
     sc_services_set_order();
 
-    $('.sortable').sortable();
-    $('.handles').sortable({
+    $('.sortable').sc_sortable();
+    $('.handles').sc_sortable({
         handle: 'span'
     });
-    $('.connected').sortable({
+    $('.connected').sc_sortable({
         connectWith: '.connected'
     });
-    $('.exclude').sortable({
+    $('.exclude').sc_sortable({
         items: ':not(.disabled)'
     });
-    $('.sortable').sortable().bind('sortupdate', function(e, ui) {
+    $('.sortable').sc_sortable().bind('sortupdate', function(e, ui) {
         sc_services_set_order();
     });
 
@@ -100,7 +100,7 @@ jQuery(document).ready(function($) {
  */
 (function($) {
     var dragging, placeholders = $();
-    $.fn.sortable = function(options) {
+    $.fn.sc_sortable = function(options) {
         var method = String(options);
         options = $.extend({
             connectWith: false

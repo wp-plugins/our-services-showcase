@@ -3,7 +3,7 @@
   Plugin Name: Our Services Showcase
   Plugin URI: http://smartcatdesign.net/downloads/our-services-showcase/
   Description: Display your services on your site in a professional and appealing way. Over 600 icons to choose from.
-  Version: 1.1
+  Version: 1.2
   Author: SmartCat
   Author URI: http://smartcatdesign.net
   License: GPL v2
@@ -28,9 +28,6 @@ require_once ( plugin_dir_path( __FILE__ ) . 'inc/class/class.smartcat-services.
 
 // activation and de-activation hooks
 register_activation_hook( __FILE__, array( 'SmartcatServicesPlugin', 'activate' ) );
-register_deactivation_hook( __FILE__, 'SmartcatServicesPlugin', 'deactivate' );
+register_deactivation_hook( __FILE__, array( 'SmartcatServicesPlugin', 'deactivate' ) );
 
 SmartcatServicesPlugin::instance();
-
-
-

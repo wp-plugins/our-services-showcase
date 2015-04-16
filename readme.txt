@@ -18,17 +18,22 @@ quickly and easily.
 * output your services members anywhere with the shortcode [our-services]
 
 
-[youtube http://youtu.be/upV_fevCh_s]
-
 == Screenshots ==
-1. Template 1
-2. Template 3
-3. Options Menu
+1. Icons template
+2. Icon list - Over 600 icons to choose from
+3. Template demo ( Pro version )
 
 == Installation ==
 1. Download the plugin, then upload the zipped file to your site from the WordPress dashboard plugin uploader menu
 2. OR - Upload the unpacked folder folder via FTP into /wp-content/plugins
 
 == Changelog == 
+
+= 1.2 = enhanced functionality
+- fixed sortable issue
+- added pro version templates
+- enhanced image template
+
+= 1.1 = minor bug fix
 
 = 1.0 = initial release

@@ -9,7 +9,7 @@
 
 .center{ text-align: center; }
 
-
+#sc_our_services a{ text-decoration: none; border-bottom: 0;}
 .sc_service .sc_service_name a{ text-decoration: none;}
 #sc_our_services_lightbox{
     position: fixed;
@@ -21,7 +21,7 @@
     background: rgba(0,0,0,0.75);
     display: none;
 }
-#sc_our_services_lightbox .icons{ display: none;}
+#sc_our_services_lightbox .smartcat_icons{ display: none;}
 
 #sc_our_services_lightbox .sc_our_services_lightbox .social a{
     display: inline-block;
@@ -94,7 +94,8 @@
     margin-top: -25px;  
     transition: 0.45s all ease-in-out;
     -moz-transition: 0.45s all ease-in-out;
-    -webkit-transition: 0.45s all ease-in-out;    
+    -webkit-transition: 0.45s all ease-in-out;  
+    z-index: 9;
 }
 #sc_our_services .sc_service_inner:hover .sc_services_more{
     top: 50%;
@@ -104,21 +105,46 @@
 }
 
 /*-- Style 1 --*/
-#sc_our_services.style1 .sc_service_inner{
+#sc_our_services.smartcat_images .sc_service_inner{
     overflow: hidden;
+    position: relative;
 }
-#sc_our_services.style1 .sc_service_inner:hover .wp-post-image{
+#sc_our_services.smartcat_images .sc_service_inner:hover .wp-post-image{
     transform: scale(1.15);
     -moz-transform: scale(1.15);
     -webkit-transform: scale(1.15);
 }
-#sc_our_services.style1 .sc_service .sc_service_inner > a{
+#sc_our_services.smartcat_images .sc_service .sc_service_inner > a{
     display: block;
     position: relative;
+    overflow: hidden;
 }
 
-/*-- Style 1 --*/
-#sc_our_services.style2 .fa{
+/*-- Images --*/
+#sc_our_services.smartcat_images .sc_service .sc-overlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 40px;
+    /*display: none;*/
+}
+
+#sc_our_services.smartcat_images .sc_service .sc_service_name{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 0;
+    padding: 0;
+}
+
+/*-- Icons --*/
+#sc_our_services.smartcat_icons .fa{
     display: inline-block;
     width: 70px;
     height: 70px;
@@ -134,19 +160,200 @@
     -webkit-transition: 0.3s all ease-in-out;
     position: relative;    
 }
-#sc_our_services.style2 .sc_service:hover .fa{
+#sc_our_services.smartcat_icons .sc_service:hover .fa{
     transform: scale( 1.3 );
     -moz-transform: scale( 1.3 );
     -webkit-transform: scale( 1.3 );
     color: #fff;
 }
-#sc_our_services.style2 .sc_service{
+#sc_our_services.smartcat_icons .sc_service{
     padding-top: 15px;
 }
-#sc_our_services.style2 .sc_service .sc_service_name{
+#sc_our_services.smartcat_icons .sc_service .sc_service_name{
     margin-top: 20px;
     font-weight: 700;
 }
+
+/*-- Zoom Out --*/
+#sc_our_services.smartcat_zoomOut {
+    
+}
+#sc_our_services.smartcat_zoomOut .sc_service {
+    overflow: hidden;
+    position: relative;
+    /*background: red;*/
+/*    padding-left: 0;
+    padding-right: 0;*/
+}
+#sc_our_services.smartcat_zoomOut .sc_service .wp-post-image{
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+#sc_our_services.smartcat_zoomOut .sc_service:hover .wp-post-image{
+    transform: translateY(-50px) scale(0.45);
+    -webkit-transform: translateY(-50px) scale(0.45);
+    -moz-transform: translateY(-50px) scale(0.45);
+}
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner {
+    overflow: hidden;
+
+}
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_service_name,
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_services_read_more{
+    display: none;
+}
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_service_name.show,
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_services_read_more.show{
+    display: block;
+}
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_service_name{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9;
+
+}
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_services_content{
+    display: none;
+}
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_services_read_more{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+}
+#sc_our_services.smartcat_zoomOut .sc_service .sc_service_inner .sc_services_read_more a{
+    text-align: center;
+    padding: 2px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    
+    color: rgb(255, 255, 255);    
+    font-size: 12px;
+    
+}
+
+/*-- Slide --*/
+#sc_our_services.smartcat_slide,
+#sc_our_services.smartcat_slide .sc_service_inner,
+#sc_our_services.smartcat_slide .sc_service{
+    position: relative;
+    overflow: hidden;
+}
+#sc_our_services.smartcat_slide .sc-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    background: rgba( 50, 50, 50, 0.5 );
+}
+#sc_our_services.smartcat_slide .sc_services_content{
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+    left: 0;
+    background: rgba(255,255,255,0.8);
+    color: #000;
+    font-size: 14px;
+    display: none;
+    
+}
+#sc_our_services.smartcat_slide .sc_services_content.show{
+    display: block;
+}
+#sc_our_services.smartcat_slide .sc_service_name{
+    position: absolute;
+    width: 50%;
+    top: 30px;
+    left: 30px;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.6);
+    display: none;
+}
+#sc_our_services.smartcat_slide .sc_service_name.show{
+    display: block;
+}
+#sc_our_services.smartcat_slide .sc_services_read_more{
+/*    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;*/
+
+    display: inline;
+}
+#sc_our_services.smartcat_slide .sc_service .sc-overlay{
+    display: none;
+}
+#sc_our_services.smartcat_slide .sc_service:hover .sc-overlay{
+    display: block
+    
+}
+/*-- Quad --*/
+#sc_our_services .smartcat_quad{
+    position: relative;
+}
+#sc_our_services.smartcat_quad .sc_service_name{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+#sc_our_services.smartcat_quad .sc_services_read_more{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    display: none;
+    font-size: 24px;
+}
+#sc_our_services.smartcat_quad .sc_services_read_more a{
+/*    display: block;
+    width: 100%;*/
+}
+
+/*-- Columns --*/
+#sc_our_services.smartcat_columns .sc_service{
+    
+}
+#sc_our_services.smartcat_columns .sc_service .sc_service_name{
+    padding-top: 0;
+    margin-top: 0;
+    
+}
+#sc_our_services.smartcat_columns .sc_service .fa{
+    font-size: 40px;
+    border: 1px solid;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    display: inline-block;
+    border-radius: 100%;
+}
+
+
+#sc_our_services.smartcat_quad,
+#sc_our_services.smartcat_quad .sc_service_inner,
+#sc_our_services.smartcat_quad .sc_service{
+    position: relative;
+    overflow: hidden;
+}
+#sc_our_services.smartcat_quad .sc_service .sc-overlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: #333;
+    background: rgba( 50, 50, 50, 0.5 );
+}
+
+
 /**
 * Grid CSS
 */
@@ -157,6 +364,7 @@
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;    
+    box-sizing: border-box;
   }
   .sc-col-sm-12 {
     width: 100%;
@@ -194,4 +402,9 @@
   .sc-col-sm-1 {
     width: 8.33333333%;
   }
+}
+@media( max-width: 768px ){
+    #sc_our_services.smartcat_quad .sc_service_name{
+        bottom: 45px;
+    }
 }
