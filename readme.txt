@@ -4,7 +4,7 @@ Donate link: http://smartcatdesign.net
 Tags: services, products, portfolio, showcase, service, product, list, staff, employees, widget, shortcode, icons, grid, template, custom post type
 Requires at least: 3.2
 Tested up to: 4.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 
 A beautiful and professional way to showcase your services or products on your website
